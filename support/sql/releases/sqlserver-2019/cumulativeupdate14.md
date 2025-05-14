@@ -33,6 +33,14 @@ This issue is fixed in [SQL Server 2019 CU15](cumulativeupdate15.md#14488550).
 
 [!INCLUDE [av-sesssion-context-2019](../includes/av-sesssion-context-2019.md)]
 
+### Issue three
+
+SQL Server 2019 CU14 introduced a fix 14307204 to address wrong results in parallel plans returned by the built-in SESSION_CONTEXT. However, this fix might create access violation dump files when the SESSION is reset for reuse. To mitigate this issue and avoid incorrect results, you can disable the original fix, and also disable the parallelism for the built-in SESSION_CONTEXT. To do this, use the following trace flags:
+
+11042 - This trace flag disables the parallelism for the built-in SESSION_CONTEXT.
+
+9432 - This trace flag disables the fix that was introduced in SQL Server 2019 CU14.
+
 ## Improvements and fixes included in this update
 
 A downloadable Excel workbook that contains a summary list of builds, together with their current support lifecycle, is available. The Excel file also contains detailed fix lists for SQL Server 2019 and SQL Server 2017. [Select to download this Excel file now](https://aka.ms/sqlserverbuilds).
